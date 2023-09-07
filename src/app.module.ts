@@ -2,6 +2,7 @@ import { Module } from '@nestjs/common';
 import { ConfigModule } from '@nestjs/config';
 import { DbModule } from './db/db.module';
 import { RedisModule } from './redis/redis.module';
+import { ShortUrlModule } from './short-url/short-url.module';
 import * as Joi from '@hapi/joi';
 
 @Module({
@@ -16,10 +17,12 @@ import * as Joi from '@hapi/joi';
         PORT: Joi.number(),
         REDIS_HOST: Joi.string().required(),
         REDIS_PORT: Joi.number().required(),
+        BASE_URL: Joi.string().required(),
       }),
     }),
     DbModule,
     RedisModule,
+    ShortUrlModule,
   ],
   controllers: [],
   providers: [],
